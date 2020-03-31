@@ -211,7 +211,7 @@ public class TelaCadastroProdutos extends JFrame {
 	}
 
 	private void CadastrarProduto() {
-		String sql = "insert into tbProduto(marcaProduto,modeloProduto,corProduto,categoriaProduto,qtdproduto,tamanhoProduto) values(?,?,?,?,?,?)";
+		String sql = "insert into tbProduto(marcaProduto,modeloProduto,corProduto,categoriaProduto,qtdproduto,valorproduto,tamanhoProduto) values(?,?,?,?,?,?,?)";
 
 		try {
 
@@ -227,6 +227,7 @@ public class TelaCadastroProdutos extends JFrame {
 			pst.setString(3, txtCorProduto.getText());
 			pst.setString(4, comboBoxCategoriaProduto.getSelectedItem().toString());
 			pst.setInt(5, 0);
+			pst.setFloat(5, Float.parseFloat(txtPrecoProduto.getText()));
 			pst.setString(6, txtTamanhoProduto.getText());
 			pst.executeUpdate();
 
@@ -252,7 +253,7 @@ public class TelaCadastroProdutos extends JFrame {
 	}
 
 	private void CadastraProdutoStock(int idProduto) throws SQLException {
-		String sql = "insert into tbStock(fkproduto,attqtdproduto,dataattproduto,valorproduto,fkcolaborador) values(?,?,?,?,?)";
+		String sql = "insert into tbStock(fkproduto,attqtdproduto,dataattproduto,attvalorproduto,fkcolaborador) values(?,?,?,?,?)";
 
 		DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 		Date date = new Date();
